@@ -1,0 +1,85 @@
+.cartrecovery{margin:var(--gap-bw-components) 0;display:flex;flex-direction:column}
+.cartrecovery{margin-bottom:0}
+.cartrecovery .container{width:100%;max-width:1192px;margin:0 auto}
+.section-title{font-size:24px;font-weight:300;color:#333;padding-bottom:15px;letter-spacing:0;margin:0}
+.section-subtitle{font-size:15px;color:#555;padding:0;line-height:22px;letter-spacing:0;margin-bottom:24px}
+.cartcontainer{background-color:#fff;border:1px solid #e4e4e4;border-radius:5px;min-height:50px;display:flex;position:relative}
+.imagefullheight {
+    width: 11%;
+    display: inline-flex;
+    height: 200px;
+    border-radius: 5px 0 0 5px;
+    overflow: hidden;
+}
+.imagefullheight img{border-radius:5px 0 0 5px;object-fit:cover}
+.cartdetails{display:inline-flex;width:87%}
+.cartdetails .seperatorline{border-bottom:1px solid #e4e4e4 !important}
+.cartdetails .bookingupcoming{margin:0;border:0;width:100%;display:inline;padding:20px 15px 22px 25px}
+.cartdetails .bookingdetails{    
+    width: 46%;
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 2%;
+}
+.completebooking{width:25%;display:inline;float:right}
+.cartdetails .seperatorline{margin:10px 0}
+.cartdetails .tripdate{width:100%;font-size:15px}
+.triptypewithpax{text-align:center;color:#555;font-size:15px;width:42.9%}
+.cartdetails .tripdestinations .tripfrom,.cartdetails .tripdestinations .tripto{font-size:30px}
+.cartdetails .tripcountry .tripfrom,.cartdetails .tripcountry .tripto{font-size:15px;color:#555}
+.collapsesection{display:inline-flex;width:100%;margin-top:15px;transition:height 1s ease-in-out;min-height:32px}
+.flexibilty{width:33%;margin-right:4%}
+.collapsesection .flexibilty:last-child{margin-right:0}
+.flexibilty a{color:#333;font-size:15px}
+.flexibilty a img{width:32px}
+.flexibilty a span{padding-left:5px;font-size:15px;color:#333;padding-bottom:5px}
+.flexibilty span{font-size:13px;color:#555;display:inline-flex;padding-left:42px}
+.collapsesection .dropdown-toggle{position:relative;width:7%}
+.collapsemessage{float:right;display:inline-flex;margin-top:20px}
+.collapsemessage button{display:inline-flex;border:0 !important;background-color:transparent;padding:0}
+.collapsemessage button::after{position:static !important;color:#555 !important}
+.collapsemessage button:hover,.collapsemessage button:focus{background:transparent !important}
+.collapsemessage button::after{padding-top:1px;font-family:icomoon !important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;border:0;color:var(--primary1);background:0;font-size:9px;position:absolute;width:17px;z-index:9;right:13px;top:13px;content:'\e926' !important}
+.collapsemessage[aria-expanded=true] button::after{transform:rotate(180deg);transition:transform .5s ease-in-out}
+.collapsemessage[aria-expanded=false] button::after{transition:transform .5s ease-in-out}
+.collapsesection.collapse:not(.show){display:inline-flex;max-height:32px;overflow:hidden}
+.cartcontainer .close-upcoming-trip{position:absolute;top:20px;right:15px}
+
+.tripdestinations{
+    position: relative;
+}
+
+.tripdestinations::after {
+    position: absolute;
+    border: 1px solid #f2f2f2;
+    height: 1px;
+    width: 80%;
+    z-index: 0;
+    top: 21px;
+    content: '';
+    left: 72px;
+}
+
+.triptypewithpax span{display:none}
+@media(max-width:768px){.close-upcoming-trip button.close{display:inline;width:32px;height:32px;background-color:#fff;border-radius:50%;background-size:12px}
+.cartdetails .bookingupcoming{padding:0}
+.cartcontainer{flex-direction:column}
+.imagefullheight{width:100%;min-height:150px;border-radius:5px 5px 0 0;display:inline}
+.imagefullheight img{border-radius:5px 5px 0 0}
+.collapsesection{flex-direction:column;margin-bottom:20px}
+.flexibilty:last-child{margin-bottom:0}
+.flexibilty,.cartdetails,.cartdetails .bookingdetails,.triptypewithpax,.completebooking{width:100%}
+.flexibilty{padding-left:15px;margin-bottom:30px}
+.flexibilty a span{font-size:15px;font-weight:500}
+.flexibilty span{font-size:13px;padding-right:30px}
+.triptypewithpax{text-align:left;padding:30px 0 30px 15px;display:flow-root}
+.completebooking{padding:0 15px;display:flex;float:none}
+.cartdetails .tripdate,.bookingdetails{padding:20px 15px 0 15px}
+.bookingdetails{padding:5px 15px 0 15px}
+.section-subtitle,.triptypewithpax br{display:none}
+.section-title{padding-bottom:20px}
+.cartdetails .tripdestinations .tripfrom,.cartdetails .tripdestinations .tripto{font-size:40px}
+.collapsemessage{position:absolute;width:17%;right:4%}
+.cartdetails .seperatorline{margin-top:20px}
+.triptypewithpax span{display:inline;padding:0 5px}
+}

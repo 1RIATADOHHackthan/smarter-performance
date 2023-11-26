@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Cargo Smart Contract</title>
+        <script src="scripts/jquery-3.7.1.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/flights-section.css" rel="stylesheet">
+        <script src="css/bootstrap.min.js"></script>
+        <script src="scripts/popper.min.js"></script>
+        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <link rel="stylesheet" href="css/cargo.css">
+
+        <script>
+
+            $('document').ready(function(){
+
+                $('.btn-next').click(function(){
+                    
+                    $('.product-form').hide();
+                    $('.product-details h2 span').show()
+                    //$('.product-overview').removeClass('d-none');
+                    $('.service-section-overlay').show()
+                    setTimeout(function(){
+                        $('.service-section-overlay').hide()
+                        $('.services').slideDown();
+                    },1000);
+                  
+
+
+                });
+                $('.btn-select-service').click(function(){
+                    
+                    $('.proservice').hide();
+                    $('.services h2 span').show()
+                    //$('.product-overview').removeClass('d-none');
+                    $('.flight-section-overlay').show();
+                    setTimeout(function(){
+                        $('.flight-section-overlay').hide()
+                        $('.flight-section').slideDown();
+                    },1000);
+
+
+                });
+
+                $('.btn-flight-details').click(function(){
+                    $('.flight-detais').hide();
+                    $('.flight-section h2 span').show();
+                    $('.shipment-overlay').show()
+                    setTimeout(function(){
+                        $('.shipment-overlay').hide()
+                        $('.shipment').show();
+                    },1000);
+                });
+
+                $('.btn-flight-details-next').click(function(){
+                    $('.shipment-block').hide();
+                    $('h2 span').hide();
+                    $('.payment-overlay').show();
+                    setTimeout(function(){
+                        $('.payment-overlay').hide()
+                        $('.payment').show();
+                    },2000);
+                });
+
+                $('.btn-confirm').click(function(){
+                  
+                    $('.product-details,.services,.flight-section,.shipment,.payment').hide();
+                    $('.gen-contract').show()
+                    setTimeout(function(){
+                        $('.gen-contract').hide()
+                        $('.smartContract').slideDown();
+                    },3000);
+                    
+                });
+
+                $('.card').click(function(){
+                    $(this).find('input[type=radio]').prop('checked',true);
+       
+
+                });
+
+
+            });
+            (function () {
+  
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                    })
+   
+                })();
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Cargo value chain tracking with Smart contract</h1>
+        </header>
+        <section class="mt-3 product-details">
+            <h2>Shipment Basic Details <span><img src="images/edit.png" width="40px"> </span></h2>
+
+            <div class="product-form">
+            <form class="col-12 needs-validation" novalidate>
+              <div class="fields col-12">
+                      <!-- <div class="field d-flex">
+                    <div class="form-floating col-4">
+                        <input type="text" class="form-control" id="prefix" placeholder="Enter origin" required>
+                        <label for="prefix">Prefix </label>
+                    </div>
+                    <div class="form-floating col-8">
+                        <input type="text" class="form-control" id="awbNumber" placeholder="Enter origin" required>
+                        <label for="awbNumber">Awb Bill number</label>
+                    </div>
+                </div> -->
+                <div class="field d-flex col-3">                 
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="origin" placeholder="Enter origin" required>
+                        <label for="origin">Origin</label>
+                    </div>
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="destination" placeholder="Enter destination" required>
+                        <label for="destination">Destination</label>
+                    </div>
+                </div>
+                <div class="field d-flex col-2">
+                    <div class="form-floating col-4">
+                        <input type="text" class="form-control" id="iataCode" placeholder="Enter origin" required>
+                        <label for="iataCode">Iata Code</label>
+                    </div>
+                    <div class="form-floating col-8">
+                        <input type="text" class="form-control" id="iataAgentName" placeholder="Enter IATA" required>
+                        <label for="iataAgentName">IATA Agent Name</label>
+                    </div>
+                </div>
+                  <div class="field d-flex col-3">
+                    <div class="form-floating col-4">
+                        <input type="text" class="form-control" id="shipperCode" placeholder="Enter IATA" required>
+                        <label for="shipperCode">Shipper Code</label>
+                    </div>
+                    <div class="form-floating col-8">
+                        <input type="text" class="form-control" id="shipperName" placeholder="Enter IATA" required>
+                        <label for="shipperName">Shipper Name</label>
+                    </div>
+                    </div>
+
+                    <div class="field d-flex col-3">
+                    <div class="form-floating col-4">
+                        <input type="text" class="form-control" id="ConsigneeCode" placeholder="Enter IATA" required>
+                        <label for="ConsigneeCode">Consignee Code</label>
+                    </div>
+                    <div class="form-floating col-8">
+                        <input type="text" class="form-control" id="ConsigneeName" placeholder="Enter IATA" required>
+                        <label for="ConsigneeName">Consignee Name</label>
+                    </div>
+                    </div>
+
+           
+                    
+                    <div class="form-floating col-1 field">
+                        <input type="text" class="form-control" id="piece" placeholder="Enter Piece" required>
+                        <label for="piece">Piece</label>
+                    </div>
+                    <div class="field col-2 d-flex">
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="gWht" placeholder="Enter Gross Weight" required>
+                        <label for="gWht">Gross Weight</label>
+                    </div>
+                    <div class="form-floating col-5">
+                        <input type="text" class="form-control" id="wtUnit" placeholder="Enter Weight unit" required>
+                        <label for="wtunit">Unit</label>
+                    </div>
+                    </div>
+                    <div class="field col-2 d-flex" style="margin-left:-24px">
+                        
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="vol" placeholder="Enter Volume" required>
+                        <label for="vol">Volume</label>
+                    </div>
+                    <div class="form-floating col-6">
+                        <input type="text" class="form-control" id="volUnit" placeholder="Enter Volume Unit" required>
+                        <label for="volUnit">Unit</label>
+                    </div>
+                    </div>
+                    <div class="form-floating col-1 field">
+                        <input type="text" class="form-control" id="chgWght" placeholder="Enter Chg Weight" required>
+                        <label for="chgWght">Chg Weight</label>
+                    </div>
+
+                    <div class="form-floating col-1 field">
+                        <input type="text" class="form-control" id="mob" placeholder="Enter mob" required>
+                        <label for="mob">MOP</label>
+                    </div>
+
+                <div class="field col-4 d-flex">
+                    <div class="form-floating col-4 ">
+                        <input type="text" class="form-control" id="volUnit" placeholder="Enter Volume Unit" required>
+                        <label for="volUnit">Commodity code</label>
+                    </div>
+                    <div class="form-floating col-5 ">
+                        <input type="text" class="form-control" id="chgWght" placeholder="Enter Volume Unit" required>
+                        <label for="chgWght">Nature of Goods</label>
+                    </div>  
+                    
+                    <div class="form-floating col-3 ">
+                        <input type="text" class="form-control" id="chgWght" placeholder="Enter Volume Unit" required>
+                        <label for="chgWght">SHC code</label>
+                    </div>  
+                </div>
+
+                    <!-- <div class="form-floating col-12 field">
+                        <input type="date" class="form-control" id="tenderDate" placeholder="Enter tender date" required>
+                        <label for="tenderDate">Tender Date</label>
+                    </div>
+                    <div class="form-floating col-12 field">
+                        <input type="text" class="form-control" id="commodity" placeholder="Enter commodity" required>
+                        <label for="commodity">Commodity</label>
+                    </div>
+                    <div class="form-floating col-12 field">
+                        <select class="form-select form-select-lg" id="services" aria-label="Services" placeholder="Enter Services">
+                            <option selected>Select Services</option>
+                            <option value="1">Platinum</option>
+                            <option value="2">Gold</option>
+                            <option value="3">Silver</option>
+                          </select>
+                        <label for="services">Services</label>
+                    </div> -->
+             
+    
+            
+          
+                    <h4 class="col-12 "> Dims & ULD</h4>
+                    <div class="col-12 d-flex">
+                   
+                    <table cellspacing="10px" cellpadding="10px">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="20%">
+                          </colgroup>
+                 
+                        <tr>
+                            <th>Piece</th>
+                            <th>Piece reference</th>
+                            <th>Wt per piece</th>
+                            <th>Length</th>
+                            <th>Width</th>
+                            <th>Height</th>
+                            <th>Volume</th>
+                            <th style="width:100px">Sensor ID </th>
+
+                        </tr>
+                        <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+         
+
+                        </tr>
+                        <tr>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+          
+    
+                            </tr>
+                            <tr>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text"></td>
+        
+                                </tr>
+                     
+
+
+
+                    </table>
+                    </div>          
+         
+                           
+                </div>
+
+         
+
+            </form> 
+            <div class="fields-btns">
+                <button class="btn btn-next">Next</button>
+            </div>            
+        </div>
+
+            
+
+        </section>
+        <section class="service-section-overlay text-center" style="display:none">
+            <p>Please wait for a moment...</p>
+            <picture>
+                <img text-align="center" src="images/gear-icon.gif">
+            </picture>
+        </section>
+        <section class="services" style="display: none;">
+        <h2 class="col-12"> Select Product & Service Details <span><img src="images/edit.png" width="40px"> </span></h2>
+        <div class="proservice">
+        <div class="products mb-4">
+            <div class="card product">
+                <div class="card-body">
+                    <img src="images/general-cargo.png">
+                    <h6>General Cargo</h6>
+                    <div class="sel-produt">
+                        <input class="form-check-input" type="radio" name="product" id="gCargo" value="option1" checked>
+                        <label class="form-check-label" for="gCargo"></label>
+                    </div>
+                    
+                </div>
+   
+
+            </div>
+
+            <div class="card product">
+                <div class="card-body">
+                    <img src="images/Pharma.png">
+                    <h6>Pharma</h6>
+                    <div class="sel-produt">
+                        <input class="form-check-input" type="radio" name="product" id="Pharma" value="option1" checked>
+                        <label class="form-check-label" for="Pharma"></label>
+                    </div>
+                    
+                </div>
+   
+
+            </div>
+            <div class="card product">
+                <div class="card-body">
+                    <img src="images/dangereous-goods.png">
+                    <h6>Dangereous Goods</h6>
+                    <div class="sel-produt">
+                        <input class="form-check-input" type="radio" name="product" id="dGoods" value="option1" checked>
+                        <label class="form-check-label" for="dGoods"></label>
+                    </div>
+                </div>  
+
+            </div>
+
+          
+
+        </div>
+    
+   
+          <div class="service-detail ">
+           
+            <div class="card service silver">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h6 class="card-title">Silver</h6>
+                  <div class="sel-service">
+                    <input class="form-check-input" type="radio" name="selService" id="silver" value="option2" >
+                    <label class="form-check-label" for="silver"></label>
+                </div>
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Airport to Airport Service</li>
+                    <li class="list-group-item">Departure +4 days Shipping</li>
+                    <li class="list-group-item">Piece-level Tracking</li>
+                    <li class="list-group-item"> Within 5 Hrs Ramp Exposure</li>
+                  
+                    <li class="list-group-item">Real-time Status Update</li>
+                    <li class="list-group-item">Capacity confirmed upto 500Kgs</li>
+                    <li class="list-group-item">Manifest - Mixed Cargo</li>
+                    <li></li>
+                                 
+                </ul>
+             </div>
+              <div class="card service gold" >
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h6 class="card-title">Gold</h6>
+                  <div class="sel-service">
+                    <input class="form-check-input" type="radio" name="selService" id="gold" value="option2">
+                    <label class="form-check-label" for="gold"></label>
+                </div>
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                 <li class="list-group-item">Airport to Airport Service</li>
+                  <li class="list-group-item">Departure +2 days Shipping</li>
+                  <li class="list-group-item">Within 5 Hrs Ramp Exposure</li>
+                  <li class="list-group-item">Piece-level Tracking</li>
+                  <li class="list-group-item">Real-time Status Update</li>
+                  <li class="list-group-item">Capacity confirmed upto 500Kgs</li>
+                  <li class="list-group-item">Manifest - Mixed Cargo</li>
+                  <li class="list-group-item">Partial Refund on SLA breach</li>
+             
+                 </ul>
+                </div>
+              <div class="card service platinum">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h6 class="card-title">Platinum</h6>
+                  <div class="sel-service">
+                    <input class="form-check-input" type="radio" name="selService" id="platinum" value="option2">
+                    <label class="form-check-label" for="platinum"></label>
+                </div>
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Door-to-Door Service</li>
+                    <li class="list-group-item">Same Day Shipping</li>
+                    <li class="list-group-item">Minimal Ramp Exposure</li>
+                    <li class="list-group-item">Piece-level Tracking</li>
+                    <li class="list-group-item">Real-time Status Update</li>
+                    <li class="list-group-item">Confirmed Capacity</li>
+                    <li class="list-group-item">Manifest - Exclusive</li>
+                    <li class="list-group-item">Full Refund on SLA breach</li>   
+                </ul>
+               </div>
+     
+
+            </div>
+            <div class="fields-btns pull-right">
+                <button class="btn btn-select-service">Next</button>
+            </div> 
+        </div>
+        </section>
+
+        <section class="flight-section-overlay text-center" style="display:none">
+            <p>Please wait for a moment...</p>
+            <picture>
+                <img text-align="center" src="images/gear-icon.gif">
+            </picture>
+        </section>
+
+        <section class="flight-section" style="display: none;">
+            <h2>Flight Details <span><img src="images/edit.png" width="40px"> </span></h2>
+            <div class="flight-detais">
+                <div class="cartcontainer">
+                    <div class="imagefullheight">
+                        <img class="" src="images/lhr.jpg" alt="">
+                    </div>
+                    <div class="cartdetails">
+                        <div class="bookingupcoming">
+                            <div class="tripdate">QR0528 02 Dec 2023</div>
+                            <div class="bookingdetails">
+                                <div class="tripdestinations">
+                                    <div class="tripfrom">LHR</div>
+                                    <div class="tripto text-right"> &nbsp;</div>
+                                </div>
+                                <div class="tripcountry">
+                                    <div class="tripfrom">London</div>
+                                    <div class="tripto text-right">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="bookingdetails">
+                                <div class="tripdestinations">
+                                    <div class="tripfrom">DOH</div>
+                                    <div class="tripto text-right">BLR</div>
+                                </div>
+                                <div class="tripcountry">
+                                    <div class="tripfrom">Doha</div>
+                                    <div class="tripto text-right">Bangalore</div>
+                                </div>
+                            </div>
+                        
+                
+                        </div>
+                    </div>
+                    <div class="imagefullheight">
+                        <img class="" src="images/bengaluru.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="fields-btns">
+                    <button class="btn btn-flight-details">Next</button>
+                </div>  
+            </div>
+
+
+
+        </section>
+        <section class="shipment-overlay text-center" style="display:none">
+            <p>Please wait for a moment...</p>
+            <picture>
+                <img text-align="center" src="images/gear-icon.gif">
+            </picture>
+        </section>
+
+        <section class="shipment" style="display: none;">
+            <h2>Shipment Summary Details <span><img src="images/edit.png" width="40px"> </span></h2>
+            <div class="shipment-block">
+            <div class="col-12 d-flex">
+
+                <div class="card summary col-5">
+                    <h3>Shipment Summary Details</h3>
+
+                    <h4>AWB NO : #112e3374y8884</h4>
+                    <p>Origin:<span>Doha </span></p>
+                    <p>destination:<span>London </span></p>
+                    <p>Deprture Date:<span>27th-Nov-2023 </span></p>
+                    <p>Product :<span>Pharma </span></p>
+                    <p>Service<span>Platinum </span></p>
+                 </div>
+                 <div class="card summary col-5">
+                    <h3>Payment Summary Details</h3>
+
+                    <h4>Total Price: QAR 85,000 </h4>
+                    <p>Freight Charges:<span>50,000 </span></p>
+                    <p>Other Charges:<span>15,0000 </span></p>
+                    <p>Ancillary Service Charge<span>20,000 </span></p>
+    
+                 </div>
+
+           
+
+                </div>
+                <div class="fields-btns">
+                    <button class="btn btn-flight-details-next">Next</button>
+                </div>  
+            </div>
+
+        </section>
+        <section class="payment-overlay text-center" style="display:none">
+            <p>Please wait for a moment...</p>
+            <picture>
+                <img text-align="center" src="images/gear-icon.gif">
+            </picture>
+        </section>
+        <section class="payment" style="display: none;">
+            <h2>Payment <span><img src="images/edit.png" width="40px"> </span></h2>
+
+            <div class="col-12 d-flex pay-images">
+              
+                    <img class="mr-3" src="images/apple-pay.jpeg" width="50px">
+                    <img class="mr-3" src="images/g-pay.jpeg" height="50px">
+                    <img class="mr-3" src="images/visa.jpeg" width="50px">
+                </div>
+
+            </div>
+            <div class="col-12 d-flex">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="dcard" value="option1" checked>
+                    <label class="form-check-label" for="dcard">
+                     Debit Card
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="ccard" value="option2">
+                    <label class="form-check-label" for="ccard">
+                        Credit Card
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="gPay" value="option3" >
+                    <label class="form-check-label" for="gPay">
+                     Google pay
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment" id="applePay" value="option3" >
+                    <label class="form-check-label" for="applePay">
+                    Apple pay
+                    </label>
+                  </div>
+
+           </div>
+           <div class="col-8 fields">
+            <div class="form-floating col-3 field">
+                <input type="text" class="form-control" id="iataAgentName" placeholder="Enter IATA" required>
+                <label for="iataAgentName">Credit Card Number</label>
+            </div>
+            <div class="form-floating col-2 field">
+                <select class="form-select form-select-lg" id="services" aria-label="Services" placeholder="Enter Services">
+                     <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+
+                  </select>
+                <label for="services">Month</label>
+            </div>
+            <div class="form-floating col-3 field">
+                <select class="form-select form-select-lg" id="services" aria-label="Services" placeholder="Enter Services">
+                     <option value="1">2023</option>
+                    <option value="2">2024</option>
+                    <option value="3">2025</option>
+                  </select>
+                <label for="services">Year</label>
+            </div>
+            <div class="form-floating col-3 field">
+                <input type="text" class="form-control" id="CVV" placeholder="CVV" required>
+                <label for="CVV">CVV Number</label>
+            </div>
+            <div class="form-floating col-6 field">
+                <input type="text" class="form-control" id="Name" placeholder="Enter Name" required>
+                <label for="Name">Name on Card</label>
+            </div>
+
+           </div>
+           <div class="fields-btns">
+            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-confirm">Confirm</button>
+            </div>  
+
+        </section>
+        <section class="gen-contract" style="display: none;">
+            <div class="col-12 text-center">
+
+                <p>Please wait for a moment, Your Smart contract on the way...</p>
+                <picture>
+                    <img text-align="center" src="images/gear-icon.gif">
+                </picture>
+
+
+            </div>
+
+        </section>
+
+        <section class="smartContract" style="display: none;">
+            <h2>Smart Contract </h2>
+            <p> Your Smart contract has beed created sucessfully !</p>
+
+             <div class="col-12 smard-card">  
+                <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6> Smart Contract Agreement</h6>
+
+                    </div>
+                    <img class="smart" src="images/smart.png" />
+                    <div class="col-6">
+                
+                    <p> AWB bill No: <span>#52032142</span></p>
+                    <p>Contract reference Number: <span>CNT-2023-000587</span></p>
+                    <p>Product: <span>Pharma</span></p>
+                    <p>Product stipulation: <span>Refrigerated (2 &#176; - 8 &#176; C )</span></p>
+                    <p>Service Availed: <span>Platinum</span></p>
+                    <p>Contracting party: <span>Novartis Pharmaceuticals UK</span> </p>
+                    <p>Service Provider :<span>Qatar Airways Cargo </span></p>
+
+           
+                    </div>
+                    <div class="qr-code">
+                        <img src="images/qr-code.png" width="100px" height="100px;">
+                    </div>
+              
+                </div>
+                </div>
+     
+           
+
+                
+            </div>
+
+
+
+            
+        </section>
+        <footer>
+            @ All copyrights reserved
+        </footer>
+         
+    </body>
+
+
+
+</html>

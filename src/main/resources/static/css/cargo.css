@@ -1,0 +1,409 @@
+   /* @font-face {
+                font-family: 'Material Icons';
+                font-style: normal;
+                font-weight: 400;
+                src: url(https://example.com/MaterialIcons-Regular.eot); 
+                src: local('Material Icons'),
+                    local('MaterialIcons-Regular'),
+                    url(https://fonts.googleapis.com/icon/MaterialIcons-Regular.woff2) format('woff2'),
+                    url(https://fonts.googleapis.com/icon/MaterialIcons-Regular.woff) format('woff'),
+                    url(https://fonts.googleapis.com/icon/MaterialIcons-Regular.ttf) format('truetype');
+            } 
+            */
+            :root {
+                --brand-color1:#3a35af;
+                --brand-color:#2c5a09;
+                --brand-color2:#86bc25;
+
+            }
+            @font-face {
+                font-family: Jotia;
+                src: url(../fonts/jotia_light.woff) format("woff2");
+                font-weight: 300;
+                font-style: normal;
+                font-display: swap
+            }
+            @font-face {
+                font-family: Jotia;
+                src: url(../fonts/jotia_thin.woff) format("woff2");
+                font-weight: 100;
+                font-style: normal;
+                font-display: swap
+            }
+            body{
+                font-family:"jotia";
+                font-size:1rem;
+                color:#000;
+                padding-bottom:2rem;
+            }
+
+            .material-icons {
+                font-family: 'Material Icons';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;  /* Preferred icon size */
+                display: inline-block;
+                line-height: 1;
+                text-transform: none;
+                letter-spacing: normal;
+                word-wrap: normal;
+                white-space: nowrap;
+                direction: ltr;
+
+                /* Support for all WebKit browsers. */
+                -webkit-font-smoothing: antialiased;
+                /* Support for Safari and Chrome. */
+                text-rendering: optimizeLegibility;
+
+                /* Support for Firefox. */
+                -moz-osx-font-smoothing: grayscale;
+
+                /* Support for IE. */
+                font-feature-settings: 'liga';
+            }
+            header,footer{
+                min-height:100px;
+                justify-content: center;
+                align-items: center;
+                margin:0 auto;
+                padding:0;
+                display:flex;
+                /* background: linear-gradient(to right, #80459f 0%,#c75663 100%); */
+                background: linear-gradient(to right, var(--brand-color)  0%,var(--brand-color2) 100%);
+                backdrop-filter: 10px;
+                color:#fff;
+            }
+            footer{
+                min-height: 20px;
+                font-size:0.7rem;
+                position:fixed;
+                width:100%;
+                height:40px;
+                bottom:0;
+            }
+            section{
+                margin:2rem;
+            }
+            header::before{
+                content:" 1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0  1 0 1 0 ";
+                letter-spacing: 4rem;
+                line-height: 4rem;
+                opacity: 0.1;
+                position: absolute;
+                color: #fff;
+                left: 86px;
+                width: 90%;
+                top: -38px;
+                transform: rotate3d(1, 1, 1, 5deg);               
+            }
+            h2{
+                font-size:2rem;
+                line-height: 4rem;
+                border-bottom: 1px solid #ccc;
+                margin:2rem 0;
+
+            }
+
+            .fields{
+                display:flex;
+                flex-wrap:wrap;
+                gap:24px;
+      
+            }
+            .fields-btns{
+                display:flex;
+                flex-wrap:wrap;
+                gap:24px;
+                margin:2rem;
+                justify-content: end;
+            }
+            .card{
+                border-radius: 24px;
+                overflow: hidden;
+                transition: all 1s ease;
+             }
+            .card:hover{
+                box-shadow: 0 6px 22px 10px rgba(0,0,0,0.1), 0 0 6px -1px rgba(0,0,0,0.1);
+                transform: scale(105%);
+            }
+            .service .card-body{
+                max-height: 50px;
+                min-height: 50px;
+       
+            }
+            .card>.list-group{
+                min-height: 335px;
+            }
+            .gold{
+
+                background: linear-gradient(to right, #BF953F 0%, #FCF6BA 100%);
+            }
+            .platinum{
+              
+                background-image: url('../images/platinum.png');
+                background-repeat: repeat-y;
+                background-size: contain;
+            }
+            .platinum .card-body{
+                background: linear-gradient(to right, #D6D5D3 0%, #C7C6C4 30% , #D6D5D3 60%, #dfe0e2 80%, #D6D5D3 90%, #f6f6f6 100%);
+            }
+            .card .card-body, .card ul li{
+                background: none transparent;
+                color:#fff;
+                /* background: linear-gradient(to right, #D6D5D3 0%, #C7C6C4 30% , #D6D5D3 60%, #dfe0e2 80%, #D6D5D3 90%, #f6f6f6 100%); */
+            }
+            .silver{
+                background-image: url('../images/silver.png');
+                background-repeat: repeat-y;
+                background-size: contain;
+                /* background: linear-gradient(to right, #e7e3d9 0%, #dfdbd5 30% , #ebe8e1 60%, #e6eaf1 80%, #f0ece5 90%, #e7d4d4 100%); */
+            }
+            .card .card-footer{
+                transform: translateY(100%);
+                position: absolute;
+                width: 100%;
+                background: #00000050;
+                height: 100%;
+                transition: all .5s ease;
+                display: flex;
+                justify-content: flex-end;
+                align-content: space-between;
+                flex-wrap: nowrap;
+                align-content: center;
+
+            }
+            /* .card.service:hover .card-footer{
+                transform: translateY(0%);
+       
+            } */
+            .card.service:hover:before, .card.service:active:before{
+                background: linear-gradient(to top,rgba(0,0,0,0.80),rgba(255,255,255,0.10) 35%);
+            }
+            /* .card input+label:before, .card .form-check-input+label:before{
+                content:"select"
+            }
+            .card input:checked+label:before,.card .form-check-input:checked+label::before{
+                content:"selected"
+            }
+             */
+             .btn-primary {
+                color: #fff;
+                background-color: #0d6efd;
+                border-color: #0d6efd;
+            }
+            .products {
+                gap:24px;
+                display: flex;
+            }
+            .card.product .card-body, .card.product ul li{
+ 
+                color: #000;
+                padding: 0;
+                height: 400px;
+                margin: 0;
+                
+
+            }
+            /* .card.product:hover{
+                transform: scale(100%);
+            }  */
+            .card.product .card-body img{
+                   object-fit: cover;
+            }
+            .card.product .card-body:before{
+                background: linear-gradient(to right,rgba(0,0,0,0.80),rgba(255,255,255,0.10) 100%);
+                content:'';
+                position: absolute;
+                width:100%;
+                height: 100%;
+            }
+            .card .card-body h6{
+                position: absolute;
+                z-index: 10;
+                color: #fff;
+                top: 24px;
+                left: 24px;
+                font-size: 2rem;
+            }
+            
+            .card.summary{
+                padding:24px;
+                margin-right:24px;
+            }
+            .btn-select,.btn-select-service{
+                width:40%;
+                padding:12px;
+                color: #fff;
+                border:1px solid var(--brand-color);
+                border-radius:30px;
+                align-self: end;
+                background-color: var(--brand-color);
+
+            }
+            .btn-select-service{
+                width:200px;
+            }
+            .card .btn-check:focus+.btn, .card .btn:focus {
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem rgba(246, 246, 247, 0.459);
+                color:#fff;
+            }
+            .btn-next,.btn-payment,.btn-confirm,.btn-go,.btn-flight-details,.btn-flight-details-next{
+                width:20%;
+                padding:12px;
+                color: #fff;
+                border:1px solid var( --brand-color);
+                border-radius:30px;
+                align-self: end;
+                background: var( --brand-color);
+            }
+            .btn-cancel{
+                width:20%;
+                padding:12px;
+                color: #000;
+                border:1px solid var( --brand-color);
+                border-radius:30px;
+                align-self: end;
+                background: none transparent;
+            }
+            .tripdestinations {
+                    background-image: url(../images/ic-mytrips.svg);
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    margin: 15px 0 -4px 0;
+                }
+                
+                .tripdateid, .tripdestinations, .tripcountry {
+                    display: flex;
+                    width: 100%;
+                }
+            .tripdestinations .tripfrom,.tripdestinations .tripto {
+                font-size: 30px;
+            }
+
+            .tripdate, .tripid, .tripfrom, .tripto {
+                font-size: 12px;
+                color: #555;
+                width: 50%;
+            }
+            .text-right{
+                text-align:right;
+            }
+            .form-check-input{
+                font-size:30px;
+            }
+            table {
+                width:100%;
+                border:1px solid #ccc;
+                padding:5px;
+            }
+            table th{
+                background: var( --brand-color);
+                color: #fff;
+            }
+            table tr, table th{
+                border: 1px solid #ccc;
+            }
+            table td{
+                width: 14%;
+                border-right: 1px solid #ccc;
+            }
+            h4{
+                line-height: 3rem;
+                border-bottom: 1px solid #ccc;
+            }
+            .gen-contract p{
+
+                font-size:1rem ;
+                color:#999; 
+            }
+            .smartContract .card{
+                width:100%;
+                margin: 0 auto;
+                background: #ccc;
+                border: 2px solid #2f5d0a;
+            }
+            .smard-card{
+                justify-content: center;
+                display: flex;
+            }
+            .smartContract .card div{
+                padding:24px;
+            }
+            .sel-produt,.sel-service{
+                position: absolute;
+                top: 32px;
+                right: 80px;
+                color: #fff;
+                z-index: 10;
+            }
+            .list-group,.list-group-item{
+                border:none transparent !important;
+            }
+            .list-group{
+                margin-top:1rem;
+            }
+            .list-group-item{
+                margin-left:0.8rem;
+            }
+            .payment .form-check{
+                display: flex;
+                justify-content: center;
+                margin:2rem;
+            }
+            .payment .form-check-label{
+                padding:0 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .smartContract .card-header h6{
+                font-size:2rem;
+            }
+            .smartContract .card span{
+                font-size:1rem;
+                display: block;
+            }
+            .smartContract .card .smart{
+                position: absolute;
+                top: 100px;
+                right: 20px;
+                width: 200px;
+                align-self: end;
+            }
+            .qr-code{
+                position: absolute;
+                right: 35px;
+                bottom: 35px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                box-shadow: 10px 10px 10px #ddd7d7;
+                background: #fff;
+
+            }
+
+            .pay-images{
+                gap:24px;
+            }
+            h2 span{
+                float:right;
+                width:40px;
+                display: none;
+            }
+
+       
+            @media(min-width:768px){
+                .field{
+                    /* flex:1 1 13%; */
+                    flex-wrap: wrap;
+                }
+                .service-detail{
+                    display: flex;
+                    gap:24px;
+                 }
+                .card{
+                    flex:1 1 30%;
+                    width:30%;
+                }
+            }
